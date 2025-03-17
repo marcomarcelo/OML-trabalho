@@ -1,0 +1,6 @@
+__pycache__/
+*.pkl
+*.h5
+*.log
+mlruns/  # Se usares MLflow localmente
+venv/  # Para ambientes virtuais
