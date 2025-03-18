@@ -1,0 +1,4 @@
+Pipeline(steps=[('scaler', StandardScaler()),
+                ('logistic_regression',
+                 LogisticRegression(C=0.01, class_weight='balanced',
+                                    max_iter=500, random_state=42))])
