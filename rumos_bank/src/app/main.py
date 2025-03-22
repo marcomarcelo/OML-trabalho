@@ -1,16 +1,15 @@
-import fastapi
-from fastapi.middleware.cors import CORSMiddleware
-
-import mlflow
-from pydantic import BaseModel, conint
 import pandas as pd
 import json
+import mlflow
 import uvicorn
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from contextlib import asynccontextmanager
+from pydantic import BaseModel, conint
 
 # Load the application configuration
 with open('./config/app.json') as f:
     config = json.load(f)
-
 
 # Define the inputs expected in the request body as JSON
 class Request(BaseModel):
@@ -27,7 +26,7 @@ class Request(BaseModel):
         DiabetesPedigreeFunction (float): Diabetes pedigree function.
         Age (int): Age of the individual.
     """
-    Pregnancies: conint(ge=0) = 0
+    Pregnancies: conint(ge=0) = 0 # type: ignore
     Glucose: int = 118
     BloodPressure: int = 84
     SkinThickness: int = 47
@@ -36,56 +35,45 @@ class Request(BaseModel):
     DiabetesPedigreeFunction: float = 0.551
     Age: int = 31
 
-# Create a FastAPI application
-app = fastapi.FastAPI()
 
-# Add CORS middleware to allow all origins, methods, and headers for local testing
+# Variável global para armazenar o modelo carregado
+model = None  
+
+
+
+
+
+# Variável global para armazenar o modelo carregado
+model = None  
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    global model
+    print("A aplicação está a iniciar...")  # Este print deve aparecer
+
+    # Carregar o modelo do MLflow apenas uma vez
+    model_uri = "models:/logistic_regression/latest"  # Ajusta conforme o nome do teu modelo
+    model = mlflow.pyfunc.load_model(model_uri)
+    print("Modelo carregado com sucesso!")
+
+    yield  # Mantém a aplicação rodando
+
+    print("A aplicação está a encerrar...")  # Este print também deve aparecer
+
+# Criar a aplicação com lifespan
+app = FastAPI(lifespan=lifespan)
+
+# Adicionar CORS Middleware depois do app ser criado
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=["*"],  # Permite todas as origens (para testes)
+    allow_methods=["*"],   # Permite todos os métodos HTTP
+    allow_headers=["*"],   # Permite todos os headers
 )
 
-
-@app.on_event("startup")
-async def startup_event():
-    """
-    Set up actions to perform when the app starts.
-
-    Configures the tracking URI for MLflow to locate the model metadata
-    in the local mlruns directory.
-    """
-        
-    mlflow.set_tracking_uri(f"{config['tracking_base_url']}:{config['tracking_port']}")
-
-    # Load the registered model specified in the configuration
-    model_uri = f"models:/{config['model_name']}@{config['model_version']}"
-    app.model = mlflow.pyfunc.load_model(model_uri = model_uri)
-    
-    print(f"Loaded model {model_uri}")
-
-
-@app.post("/has_diabetes")
-async def predict(input: Request):  
-    """
-    Prediction endpoint that processes input data and returns a model prediction.
-
-    Parameters:
-        input (Request): Request body containing input values for the model.
-
-    Returns:
-        dict: A dictionary with the model prediction under the key "prediction".
-    """
-
-    # Build a DataFrame from the request data
-    input_df = pd.DataFrame.from_dict({k: [v] for k, v in input.model_dump().items()})
-
-    # Predict using the model and retrieve the first item in the prediction list
-    prediction = app.model.predict(input_df)
-
-    # Return the prediction result as a JSON response
-    return {"prediction": prediction.tolist()[0]}
+@app.get("/")
+def read_root():
+    return {"message": "Hello, World!"}
 
 # Run the app on port 5003
-uvicorn.run(app=app, port=config["service_port"], host="0.0.0.0")
+uvicorn.run(app=app, port=config["service_port"])
