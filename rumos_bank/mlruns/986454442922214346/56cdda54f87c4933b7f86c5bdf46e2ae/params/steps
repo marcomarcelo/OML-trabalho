@@ -1,1 +1,0 @@
-[('scaler', StandardScaler()), ('logistic_regression', LogisticRegression(class_weight='balanced', max_iter=500, random_state=42))]

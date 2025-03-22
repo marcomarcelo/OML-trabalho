@@ -1,5 +1,6 @@
-aliases: {}
-creation_timestamp: 1742169403371
+aliases:
+  champion: '1'
+creation_timestamp: 1742666421889
 description: null
-last_updated_timestamp: 1742252509385
+last_updated_timestamp: 1742666813546
 name: logistic_regression

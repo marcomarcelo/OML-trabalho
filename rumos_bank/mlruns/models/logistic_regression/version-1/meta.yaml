@@ -1,14 +1,14 @@
 aliases: []
-creation_timestamp: 1742169403409
+creation_timestamp: 1742666421916
 current_stage: None
 description: null
-last_updated_timestamp: 1742169403409
+last_updated_timestamp: 1742666421916
 name: logistic_regression
-run_id: c52a8cc826774d9cb7360a43ce79024a
+run_id: 559d190d50474e698e447e66c997c178
 run_link: null
-source: file:c:/Users/MMarcelo/OneDrive - SUCH/Data Science/repos/7. OML/OML-trabalho/rumos_bank/notebooks/../mlruns/986454442922214346/c52a8cc826774d9cb7360a43ce79024a/artifacts/logistic_regression
+source: file:c:/Users/MMarcelo/OneDrive - SUCH/Data Science/repos/7. OML/OML-trabalho/rumos_bank/notebooks/../mlruns/794425451064976514/559d190d50474e698e447e66c997c178/artifacts/logistic_regression
 status: READY
 status_message: null
-storage_location: file:c:/Users/MMarcelo/OneDrive - SUCH/Data Science/repos/7. OML/OML-trabalho/rumos_bank/notebooks/../mlruns/986454442922214346/c52a8cc826774d9cb7360a43ce79024a/artifacts/logistic_regression
+storage_location: file:c:/Users/MMarcelo/OneDrive - SUCH/Data Science/repos/7. OML/OML-trabalho/rumos_bank/notebooks/../mlruns/794425451064976514/559d190d50474e698e447e66c997c178/artifacts/logistic_regression
 user_id: null
 version: 1
