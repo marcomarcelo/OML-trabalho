@@ -129,5 +129,5 @@ async def predict(input: Request):
 def read_root():
     return {"message": "Hello, World!"}
 
-# Run the app on port 5003
+# Run the app on port 5002
 uvicorn.run(app=app, port=config["service_port"])
