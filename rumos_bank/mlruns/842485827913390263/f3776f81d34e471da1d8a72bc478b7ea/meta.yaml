@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/MMarcelo/OneDrive - SUCH/Data Science/repos/7. OML/OML-trabalho/rumos_bank/notebooks/../mlruns/842485827913390263/f3776f81d34e471da1d8a72bc478b7ea/artifacts
+end_time: 1742834276870
+entry_point_name: ''
+experiment_id: '842485827913390263'
+lifecycle_stage: active
+run_id: f3776f81d34e471da1d8a72bc478b7ea
+run_name: Decision Trees
+run_uuid: f3776f81d34e471da1d8a72bc478b7ea
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1742834275010
+status: 3
+tags: []
+user_id: MMarcelo

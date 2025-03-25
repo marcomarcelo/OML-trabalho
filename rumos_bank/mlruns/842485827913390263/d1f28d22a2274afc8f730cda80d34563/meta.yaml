@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/MMarcelo/OneDrive - SUCH/Data Science/repos/7. OML/OML-trabalho/rumos_bank/notebooks/../mlruns/842485827913390263/d1f28d22a2274afc8f730cda80d34563/artifacts
+end_time: 1742834252266
+entry_point_name: ''
+experiment_id: '842485827913390263'
+lifecycle_stage: active
+run_id: d1f28d22a2274afc8f730cda80d34563
+run_name: KNN
+run_uuid: d1f28d22a2274afc8f730cda80d34563
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1742834229359
+status: 3
+tags: []
+user_id: MMarcelo

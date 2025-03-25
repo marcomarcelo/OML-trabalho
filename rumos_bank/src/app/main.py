@@ -74,13 +74,14 @@ async def lifespan(app: FastAPI):
     global model
     print("A aplicação está a iniciar...")  
 
-    mlflow.set_tracking_uri(config['tracking_uri'])
+    # Carregar o modelo do MLflow
+    mlflow.set_tracking_uri(config['tracking_uri']) # config.docker         
+    #mlflow.set_tracking_uri(f"{config['tracking_base_url']}:{config['tracking_port']}")
 
     # Load the registered model specified in the configuration
     model_uri = f"models:/{config['model_name']}@{config['model_version']}"
-    app.model = mlflow.pyfunc.load_model(model_uri = model_uri)
-    
-    print(f"LModelo carregado com sucesso: {model_uri}")
+    model = mlflow.pyfunc.load_model(model_uri = model_uri) 
+    print(f"Modelo carregado com sucesso: {model_uri}")   
 
     # Carregar o modelo do MLflow apenas uma vez
     #model_uri = "models:/logistic_regression/latest"  # Ajusta conforme o nome do teu modelo
