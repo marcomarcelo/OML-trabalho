@@ -1,0 +1,15 @@
+aliases: []
+creation_timestamp: 1742946164763
+current_stage: None
+description: null
+last_updated_timestamp: 1742946164763
+name: knn
+run_id: 0ef79eef04e8444aa89f472f6934afcb
+run_link: null
+source: file:///c:/Users/MMarcelo/OneDrive - SUCH/Data Science/repos/7. OML/OML-trabalho/rumos_bank/notebooks/../mlruns/668725486040546701/0ef79eef04e8444aa89f472f6934afcb/artifacts/knn
+status: READY
+status_message: null
+storage_location: file:///c:/Users/MMarcelo/OneDrive - SUCH/Data Science/repos/7.
+  OML/OML-trabalho/rumos_bank/notebooks/../mlruns/668725486040546701/0ef79eef04e8444aa89f472f6934afcb/artifacts/knn
+user_id: null
+version: 1

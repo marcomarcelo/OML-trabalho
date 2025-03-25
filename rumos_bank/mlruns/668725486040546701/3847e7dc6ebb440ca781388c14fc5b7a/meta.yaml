@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/MMarcelo/OneDrive - SUCH/Data Science/repos/7. OML/OML-trabalho/rumos_bank/notebooks/../mlruns/668725486040546701/3847e7dc6ebb440ca781388c14fc5b7a/artifacts
+end_time: 1742946369017
+entry_point_name: ''
+experiment_id: '668725486040546701'
+lifecycle_stage: active
+run_id: 3847e7dc6ebb440ca781388c14fc5b7a
+run_name: ANN
+run_uuid: 3847e7dc6ebb440ca781388c14fc5b7a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1742946284853
+status: 3
+tags: []
+user_id: MMarcelo

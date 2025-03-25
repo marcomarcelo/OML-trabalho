@@ -41,29 +41,29 @@ class Request(BaseModel):
         PAY_AMT5 (float): Amount of previous payment in May, 2005.                        
         PAY_AMT6 (float): Amount of previous payment in April, 2005.            
     """
-    LIMIT_BAL: conint(ge=0) = 0 # type: ignore
-    SEX: int = 118
-    EDUCATION: int = 84
-    MARRIAGE: int = 47
-    AGE: int = 230
-    PAY_0: float = 45.8
-    PAY_2: float = 45.8
-    PAY_3: float = 45.8
-    PAY_4: float = 45.8
-    PAY_5: float = 45.8
-    PAY_6: float = 45.8
-    BILL_AMT1: float = 45.8
-    BILL_AMT2: float = 45.8
-    BILL_AMT3: float = 45.8
-    BILL_AMT4: float = 45.8
-    BILL_AMT5: float = 45.8
-    BILL_AMT6: float = 45.8
-    PAY_AMT1: float = 45.8
-    PAY_AMT2: float = 45.8
-    PAY_AMT3: float = 45.8
-    PAY_AMT4: float = 45.8
-    PAY_AMT5: float = 45.8
-    PAY_AMT6: float = 45.8
+    LIMIT_BAL: conint(ge=0) = 20000 # type: ignore
+    SEX: int = 1
+    EDUCATION: int = 2
+    MARRIAGE: int = 1
+    AGE: int = 32
+    PAY_0: float = 2.0
+    PAY_2: float = 2.0
+    PAY_3: float = 0.0
+    PAY_4: float = 0.0
+    PAY_5: float = 1.0
+    PAY_6: float = 1.0
+    BILL_AMT1: float = 7000.0
+    BILL_AMT2: float = 7000.0
+    BILL_AMT3: float = 7000.0
+    BILL_AMT4: float = 8000.0
+    BILL_AMT5: float = 9000.0
+    BILL_AMT6: float = 6000.0
+    PAY_AMT1: float = 1000.0
+    PAY_AMT2: float = 1000.0
+    PAY_AMT3: float = 0.0
+    PAY_AMT4: float = 2000.0
+    PAY_AMT5: float = 1000.0
+    PAY_AMT6: float = 1000.0
 
 
 # Variável global para armazenar o modelo carregado

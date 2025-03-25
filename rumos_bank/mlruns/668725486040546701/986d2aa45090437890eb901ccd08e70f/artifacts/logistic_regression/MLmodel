@@ -1,0 +1,42 @@
+artifact_path: logistic_regression
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.10.16
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.6.1
+is_signature_from_type_hint: false
+mlflow_version: 2.21.0
+model_size_bytes: 2166
+model_uuid: 2ddbffb85e89456390b084c22aa39780
+prompts: null
+run_id: 986d2aa45090437890eb901ccd08e70f
+signature:
+  inputs: '[{"type": "double", "name": "LIMIT_BAL", "required": true}, {"type": "double",
+    "name": "SEX", "required": true}, {"type": "double", "name": "EDUCATION", "required":
+    true}, {"type": "double", "name": "MARRIAGE", "required": true}, {"type": "double",
+    "name": "AGE", "required": true}, {"type": "double", "name": "PAY_0", "required":
+    true}, {"type": "double", "name": "PAY_2", "required": true}, {"type": "double",
+    "name": "PAY_3", "required": true}, {"type": "double", "name": "PAY_4", "required":
+    true}, {"type": "double", "name": "PAY_5", "required": true}, {"type": "double",
+    "name": "PAY_6", "required": true}, {"type": "double", "name": "BILL_AMT1", "required":
+    true}, {"type": "double", "name": "BILL_AMT2", "required": true}, {"type": "double",
+    "name": "BILL_AMT3", "required": true}, {"type": "double", "name": "BILL_AMT4",
+    "required": true}, {"type": "double", "name": "BILL_AMT5", "required": true},
+    {"type": "double", "name": "BILL_AMT6", "required": true}, {"type": "double",
+    "name": "PAY_AMT1", "required": true}, {"type": "double", "name": "PAY_AMT2",
+    "required": true}, {"type": "double", "name": "PAY_AMT3", "required": true}, {"type":
+    "double", "name": "PAY_AMT4", "required": true}, {"type": "double", "name": "PAY_AMT5",
+    "required": true}, {"type": "double", "name": "PAY_AMT6", "required": true}]'
+  outputs: '[{"type": "long", "name": "default.payment.next.month", "required": true}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2025-03-25 23:42:08.668397'

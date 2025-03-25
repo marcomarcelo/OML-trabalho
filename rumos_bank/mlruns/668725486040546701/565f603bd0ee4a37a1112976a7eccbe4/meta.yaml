@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/MMarcelo/OneDrive - SUCH/Data Science/repos/7. OML/OML-trabalho/rumos_bank/notebooks/../mlruns/668725486040546701/565f603bd0ee4a37a1112976a7eccbe4/artifacts
+end_time: 1742946208628
+entry_point_name: ''
+experiment_id: '668725486040546701'
+lifecycle_stage: active
+run_id: 565f603bd0ee4a37a1112976a7eccbe4
+run_name: SVM
+run_uuid: 565f603bd0ee4a37a1112976a7eccbe4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1742946166728
+status: 3
+tags: []
+user_id: MMarcelo
