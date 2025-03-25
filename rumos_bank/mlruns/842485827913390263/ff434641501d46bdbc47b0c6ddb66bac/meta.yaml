@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/MMarcelo/OneDrive - SUCH/Data Science/repos/7. OML/OML-trabalho/rumos_bank/notebooks/../mlruns/842485827913390263/ff434641501d46bdbc47b0c6ddb66bac/artifacts
+end_time: 1742834521386
+entry_point_name: ''
+experiment_id: '842485827913390263'
+lifecycle_stage: active
+run_id: ff434641501d46bdbc47b0c6ddb66bac
+run_name: Configuraçõs Globais
+run_uuid: ff434641501d46bdbc47b0c6ddb66bac
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1742834186335
+status: 3
+tags: []
+user_id: MMarcelo
