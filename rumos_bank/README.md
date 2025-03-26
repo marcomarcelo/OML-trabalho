@@ -1,50 +1,27 @@
 # Operacionalização de Machine Learning
 
-Este repositório descreve o processo de treino, implementação e operacionalização de modelos de Machine Learning para prever a probabilidade de um indivíduo ter diabetes. Contém instruções detalhadas sobre como utilizar o MLFlow e a FastAPI para servir os modelos, bem como informações sobre testes e ferramentas auxiliares.
+Este repositório descreve o processo de treino, implementação e operacionalização de modelos de Machine Learning para prever quais os clientes que não irão cumprir os prazos de pagamento. Contém instruções detalhadas sobre como utilizar o MLFlow e a FastAPI para servir os modelos, bem como informações sobre testes e ferramentas auxiliares.
 
-Estes ficheiros e pastas são utilizados no âmbido do curso Operacionalização de Machine Learning. Os slides podem ser obtidos [daqui](https://docs.google.com/presentation/d/1nJI_xrpfoA2itFLAVaF9O4SjYUerUkByfPSLog04lEo/edit?usp=sharing).
-
+Estes ficheiros e pastas são utilizados no âmbido do curso Operacionalização de Machine Learning.
 
 # Índice
-- [Prever Diabetes](#prever-diabetes)
+- [Prever clientes maus pagadores](#prever-clientes-maus-pagadores)
     - [Modelos](#modelos)
-    - [Webservice](#webservice)
-    - [UI](#ui)
+    - [Webservice](#webservice)    
     - [Tests](#tests)
 - [Comandos Úteis](#comandos-úteis)
 
-# Prever Diabetes
+# Prever clientes maus pagadores
 
 ## Modelos
 
-Os modelos foram treinados através da pasta notebooks.
-Estes modelos foram trackeados e registados através do MLFlow.
+Os modelos foram treinados através do notebook **rumos_bank_lending_prediction.ipynb** e trackeados e registados através do MLFlow.
 
 ## Webservice
 
-Para expormos o nosso modelo registado numa API podemos utilizar ou a funcionalidade de models serve do mlflow ou a framework FastAPI.
+O modelo foi disponibilizado através de uma API, utilizando a framework FastAPI.
 
-### Com o MlFlow
-
-Para expor uma api utilizando a funcionalidade de serving do mlflow basta correr, na raiz do projeto (pasta rumos), os seguintes comandos:
-
-Windows (psh):
-```
-$env:MLFLOW_TRACKING_URI="./mlruns"
-mlflow models serve -m models:/logistic_reg/1 --port=5001 --no-conda
-```
-
-Linux:
-```
-export MLFLOW_TRACKING_URI=./mlruns
-mlflow models serve -m models:/logistic_reg/1 --port=5001 --no-conda
-```
-
-O nome do modelo (logistic_reg) e a versão do modelo (1) devem ser substituídos pelo nome com que o modelo foi registado e a versão do mesmo a ser utilizada, respetivamente.
-
-Esta funcionalidade do mlflow utiliza a especificação de ambiente criada automaticamente pelo mlflow para o modelo, para criar um ambiente de conda para o modelo e servir o modelo isolado nesse ambiente virtual de conda.
-
-Esta API expõe o endpoint `/invocations` na qual espera receber as features de input do modelo e retorna a previsão dada pelo modelo. Para testar a API basta correr o notebook `test_requests.ipynb`, na secção de `mlflow serve`.
+Esta API expõe o endpoint `/default_payment` na qual espera receber as features de input do modelo e retorna a previsão dada pelo modelo. Para testar a API basta correr o notebook `test_requests.ipynb`, na secção de `mlflow serve`.
 
 ### Com a FastAPI
 
@@ -62,11 +39,8 @@ python ./src/app/main.py
 
 Para testar se o modelo ficou corretamente exposto na app, temos 2 opções:
 - http://127.0.0.1:5002/docs
-- Correr a secção `FastAPI` do notebook `test_requests.ipynb` ou então podemos utilizar a página html presente na diretoria `frontend` deste projeto e realizar um pedido (e ver a resposta) através desse frontend.
+- Correr a secção `FastAPI` do notebook `test_requests.ipynb`.
 
-## UI
-
-Para adicionar uma UI ao nosso webservice da FastApi, apenas necessitamos de abrir o ficheiro `frontend/form.html` num browser.
 
 ## Tests
 
