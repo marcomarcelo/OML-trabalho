@@ -1,0 +1,15 @@
+aliases: []
+creation_timestamp: 1742946283940
+current_stage: None
+description: null
+last_updated_timestamp: 1742946283940
+name: random_forests
+run_id: 91364f11463847b2b47d5287bcca7863
+run_link: null
+source: file:///c:/Users/MMarcelo/OneDrive - SUCH/Data Science/repos/7. OML/OML-trabalho/rumos_bank/notebooks/../mlruns/668725486040546701/91364f11463847b2b47d5287bcca7863/artifacts/random_forests
+status: READY
+status_message: null
+storage_location: file:///c:/Users/MMarcelo/OneDrive - SUCH/Data Science/repos/7.
+  OML/OML-trabalho/rumos_bank/notebooks/../mlruns/668725486040546701/91364f11463847b2b47d5287bcca7863/artifacts/random_forests
+user_id: null
+version: 1

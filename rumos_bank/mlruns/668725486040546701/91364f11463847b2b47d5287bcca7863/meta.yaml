@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/MMarcelo/OneDrive - SUCH/Data Science/repos/7. OML/OML-trabalho/rumos_bank/notebooks/../mlruns/668725486040546701/91364f11463847b2b47d5287bcca7863/artifacts
+end_time: 1742946284786
+entry_point_name: ''
+experiment_id: '668725486040546701'
+lifecycle_stage: active
+run_id: 91364f11463847b2b47d5287bcca7863
+run_name: Random Forests
+run_uuid: 91364f11463847b2b47d5287bcca7863
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1742946221860
+status: 3
+tags: []
+user_id: MMarcelo

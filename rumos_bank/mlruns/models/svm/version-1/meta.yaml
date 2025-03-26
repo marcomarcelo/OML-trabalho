@@ -1,0 +1,15 @@
+aliases: []
+creation_timestamp: 1742946206152
+current_stage: None
+description: null
+last_updated_timestamp: 1742946206152
+name: svm
+run_id: 565f603bd0ee4a37a1112976a7eccbe4
+run_link: null
+source: file:///c:/Users/MMarcelo/OneDrive - SUCH/Data Science/repos/7. OML/OML-trabalho/rumos_bank/notebooks/../mlruns/668725486040546701/565f603bd0ee4a37a1112976a7eccbe4/artifacts/svm
+status: READY
+status_message: null
+storage_location: file:///c:/Users/MMarcelo/OneDrive - SUCH/Data Science/repos/7.
+  OML/OML-trabalho/rumos_bank/notebooks/../mlruns/668725486040546701/565f603bd0ee4a37a1112976a7eccbe4/artifacts/svm
+user_id: null
+version: 1

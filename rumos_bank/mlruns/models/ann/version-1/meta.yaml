@@ -1,0 +1,15 @@
+aliases: []
+creation_timestamp: 1742946368456
+current_stage: None
+description: null
+last_updated_timestamp: 1742946368456
+name: ann
+run_id: 3847e7dc6ebb440ca781388c14fc5b7a
+run_link: null
+source: file:///c:/Users/MMarcelo/OneDrive - SUCH/Data Science/repos/7. OML/OML-trabalho/rumos_bank/notebooks/../mlruns/668725486040546701/3847e7dc6ebb440ca781388c14fc5b7a/artifacts/ann
+status: READY
+status_message: null
+storage_location: file:///c:/Users/MMarcelo/OneDrive - SUCH/Data Science/repos/7.
+  OML/OML-trabalho/rumos_bank/notebooks/../mlruns/668725486040546701/3847e7dc6ebb440ca781388c14fc5b7a/artifacts/ann
+user_id: null
+version: 1
