@@ -10,11 +10,11 @@ WORKDIR /app
 # Copia o ficheiro de definição do ambiente para o contentor
 COPY conda.yaml .
 
-# Atualiza o conda para a versão mais recente
-RUN ["conda", "install", "-n", "base", "-c", "defaults", "conda=25.3.0"]
+# Cria o ambiente conda a partir do ficheiro conda.yaml
+RUN conda env create -f conda.yaml
 
-# Cria o ambiente conda a partir do ficheiro conda.yaml (incluindo as dependências)
-RUN ["conda", "env", "create", "-f", "conda.yaml"]
+# Instala o curl para fazer requisições HTTP ###
+RUN apt-get update && apt-get install -y curl
 
 # Copia o código da aplicação para o contentor
 COPY config config

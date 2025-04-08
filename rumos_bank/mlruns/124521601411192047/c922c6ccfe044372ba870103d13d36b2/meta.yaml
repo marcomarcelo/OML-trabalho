@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/124521601411192047/c922c6ccfe044372ba870103d13d36b2/artifacts
+end_time: 1743521516058
+entry_point_name: ''
+experiment_id: '124521601411192047'
+lifecycle_stage: active
+run_id: c922c6ccfe044372ba870103d13d36b2
+run_name: Configuraçõs Globais
+run_uuid: c922c6ccfe044372ba870103d13d36b2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1743519955862
+status: 3
+tags: []
+user_id: MMarcelo

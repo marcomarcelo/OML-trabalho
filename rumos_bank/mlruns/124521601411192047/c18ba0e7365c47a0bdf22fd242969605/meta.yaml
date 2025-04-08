@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/124521601411192047/c18ba0e7365c47a0bdf22fd242969605/artifacts
+end_time: 1743523099573
+entry_point_name: ''
+experiment_id: '124521601411192047'
+lifecycle_stage: active
+run_id: c18ba0e7365c47a0bdf22fd242969605
+run_name: Regressão Logistica
+run_uuid: c18ba0e7365c47a0bdf22fd242969605
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1743523073308
+status: 3
+tags: []
+user_id: MMarcelo
