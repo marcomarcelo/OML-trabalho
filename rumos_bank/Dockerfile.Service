@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y curl
 # Copia o código da aplicação para o contentor
 COPY config config
 COPY src src
+COPY tests tests
 
 # Executa a aplicação FastAPI
 CMD ["conda", "run", "--no-capture-output", "-n", "OML", "python", "src/app/main.py"]

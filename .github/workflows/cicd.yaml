@@ -25,11 +25,8 @@ jobs:
       - name: Iniciar serviços
         run: docker compose -f rumos_bank/docker-compose.yaml up -d
 
-      - name: Criar ambiente para executar testes com o conda
-        uses: conda-incubator/setup-miniconda@v2
-        with:
-          environment-file: rumos_bank/conda.yaml
-          activate-environment: OML
+      - name: Correr testes dentro do container
+        run: docker exec default-payment-prediction-service conda run -n OML pytest tests
 
       - name: Verificar containers ativos
         run: docker ps -a
