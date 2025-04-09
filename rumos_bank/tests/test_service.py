@@ -2,7 +2,7 @@ import json
 import pytest
 import requests
 
-with open('./rumos_bank/config/app.json') as f:
+with open('./config/app.json') as f:
     config = json.load(f)
 
 BASE_URL = "http://localhost"
