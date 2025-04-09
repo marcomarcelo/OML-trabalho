@@ -1,14 +1,14 @@
-name: Pipeline CI/CD
+ame: Pipeline CI/CD
 
 on:
   push:
-    branches: [ main ]
+    branches: [ cicd-testing ]
   pull_request:
-    branches: [ main ]
+    branches: [ cicd-testing ]
 
 permissions:
-  contents: read
-  packages: write
+    contents: read
+    packages: write
 
 jobs:
   cicd:
@@ -23,13 +23,16 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
       - name: Iniciar serviços
-        run: docker compose up -d
+        run: docker compose -f rumos_bank/docker-compose.yaml up -d
 
       - name: Criar ambiente para executar testes com o conda
         uses: conda-incubator/setup-miniconda@v2
         with:
-          environment-file: conda.yaml
+          environment-file: rumos_bank/conda.yaml
           activate-environment: OML
+
+      - name: Verificar containers ativos
+        run: docker ps -a
 
       - name: Executar testes
         run: conda run --no-capture-output -n OML pytest
@@ -42,7 +45,5 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Enviar imagem serviço para o repositório do GitHub
-        run: docker push ghcr.io/miguelglopes/oml_service:latest
+        run: docker push ghcr.io/marcomarcelo/default-payment-prediction-service:latest
 
-      - name: Enviar imagem ui para o repositório do GitHub
-        run: docker push ghcr.io/miguelglopes/oml_ui:latest

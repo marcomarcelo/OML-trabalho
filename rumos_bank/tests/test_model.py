@@ -5,7 +5,7 @@ import mlflow
 
 @pytest.fixture(scope="module")
 def model() -> mlflow.pyfunc.PyFuncModel:
-    with open('./config/app.json') as f:
+    with open('./rumos_bank/config/app.json') as f:
         config = json.load(f)
     
     model_name = config["model_name"]
