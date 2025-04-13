@@ -33,13 +33,19 @@ jobs:
 
       #- name: Executar testes
       #  run: conda run --no-capture-output -n OML pytest
-      
+
       - name: Iniciar sessão no repositório do GitHub
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: ligação com o repositório do GitHub
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Construir imagem do serviço
+        run: docker build -t ghcr.io/marcomarcelo/default-payment-prediction-service:latest .
 
       - name: Enviar imagem serviço para o repositório do GitHub
         run: docker push ghcr.io/marcomarcelo/default-payment-prediction-service:latest
