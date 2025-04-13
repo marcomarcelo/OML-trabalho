@@ -42,7 +42,4 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Enviar imagem serviço para o repositório do GitHub
-        run: docker push ghcr.io/miguelglopes/oml_service:latest
-
-      - name: Enviar imagem ui para o repositório do GitHub
-        run: docker push ghcr.io/miguelglopes/oml_ui:latest
+        run: docker push ghcr.io/marcomarcelo/oml_service:latest
