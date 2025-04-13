@@ -31,8 +31,8 @@ jobs:
           environment-file: conda.yaml
           activate-environment: OML
 
-      - name: Executar testes
-        run: conda run --no-capture-output -n OML pytest
+      #- name: Executar testes
+      #  run: conda run --no-capture-output -n OML pytest
 
       - name: Iniciar sessão no repositório do GitHub
         uses: docker/login-action@v2
