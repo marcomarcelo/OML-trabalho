@@ -25,6 +25,15 @@ jobs:
       - name: Iniciar serviços
         run: docker compose up -d
 
+      - name: Verificar containers em execução
+        run: docker ps
+
+      - name: Estado dos serviços Docker Compose
+        run: docker compose ps
+
+      - name: Ver logs do MLflow
+        run: docker compose logs mlflow
+
       - name: Criar ambiente para executar testes com o conda
         uses: conda-incubator/setup-miniconda@v2
         with:
@@ -40,12 +49,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: ligação com o repositório do GitHub
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
-      - name: Construir imagem do serviço
-        run: docker build -t ghcr.io/marcomarcelo/default-payment-prediction-service:latest .
 
       - name: Enviar imagem serviço para o repositório do GitHub
         run: docker push ghcr.io/marcomarcelo/default-payment-prediction-service:latest
