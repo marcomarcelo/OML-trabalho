@@ -33,7 +33,6 @@ jobs:
 
       #- name: Executar testes
       #  run: conda run --no-capture-output -n OML pytest
-
       - name: Iniciar sessão no repositório do GitHub
         uses: docker/login-action@v2
         with:
