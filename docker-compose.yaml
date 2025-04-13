@@ -1,0 +1,31 @@
+services:
+  mlflow-tracking-server:
+    container_name: mlflow-tracking
+    image: ghcr.io/mlflow/mlflow
+    command: mlflow ui --port 5000 --host 0.0.0.0 --backend-store-uri ./mlruns --artifacts-destination ./mlruns
+    volumes:
+      - ./mlruns:/mlruns
+    ports:
+      - "5000:5000"
+    networks:
+      - mlflow_network
+
+  default-payment-prediction-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.Service
+      tags:
+        - default-payment-prediction-service:latest		
+        - ghcr.io/marcomarcelo/default-payment-prediction-service:latest
+    container_name: default-payment-prediction-service
+    image: default-payment-prediction-service
+    ports:
+      - "5002:5002"
+    networks:
+      - mlflow_network
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow-tracking-server:5000
+
+networks:
+  mlflow_network:
+    driver: bridge

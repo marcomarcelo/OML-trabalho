@@ -1,7 +1,0 @@
-{
-    "model_name": "logistic_regression",
-    "model_version": "champion",
-    "tracking_uri": "http://localhost:5000",
-    "service_base_url": "http://rumosbank-default-prediction-service",
-    "service_port": 5002
-}
