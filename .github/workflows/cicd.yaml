@@ -25,14 +25,11 @@ jobs:
       - name: Iniciar serviços
         run: docker compose up -d
 
-      - name: Verificar containers em execução
-        run: docker ps
-
       - name: Estado dos serviços Docker Compose
         run: docker compose ps
 
       - name: Ver logs do MLflow
-        run: docker compose logs mlflow
+        run: docker compose logs mlflow-tracking 
 
       - name: Criar ambiente para executar testes com o conda
         uses: conda-incubator/setup-miniconda@v2
