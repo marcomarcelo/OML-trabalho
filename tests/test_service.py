@@ -5,7 +5,9 @@ import requests
 with open('./config/app.json') as f:
     config = json.load(f)
 
-BASE_URL = "http://localhost"
+
+#BASE_URL = "http://localhost"
+BASE_URL = config["service_base_url"]
 PORT = config["service_port"]
 
 def test_default_payment_prediction():
