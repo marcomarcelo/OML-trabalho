@@ -3,6 +3,6 @@
     "model_version": "champion",    
     "tracking_base_url": "http://mlflow-tracking-server",
     "tracking_port": 5000,
-    "service_base_url": "http://default-payment-prediction-service",
+    "service_base_url": "http://rumosbank-default-prediction-service",
     "service_port": 5002
 }
