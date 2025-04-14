@@ -81,6 +81,14 @@ async def lifespan(app: FastAPI):
     #mlflow.set_tracking_uri(config['tracking_uri'])  
     mlflow.set_tracking_uri(f"{config['tracking_base_url']}:{config['tracking_port']}")
 
+    ###
+    print("tracking_base_url =", config.get("tracking_base_url"))
+    print("tracking_port =", config.get("tracking_port"))
+    print(f"tracking_uri = {config.get('tracking_base_url')}:{config.get('tracking_port')}")
+
+    mlflow.set_tracking_uri(f"{config['tracking_base_url']}:{config['tracking_port']}")
+    ###
+
     # Load the registered model specified in the configuration
     model = f"models:/{config['model_name']}@{config['model_version']}"    
     app.model = mlflow.pyfunc.load_model(model_uri = model)  
