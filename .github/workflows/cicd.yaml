@@ -37,11 +37,6 @@ jobs:
           environment-file: conda.yaml
           activate-environment: OML
 
-      ###
-      - name: Debug MLFLOW URI
-        run: echo "MLFLOW_TRACKING_URI: $MLFLOW_TRACKING_URI"
-      ###
-
       - name: Executar testes
         run: conda run --no-capture-output -n OML pytest
 
