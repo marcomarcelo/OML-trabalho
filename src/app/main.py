@@ -86,6 +86,7 @@ async def lifespan(app: FastAPI):
     print("tracking_port =", config.get("tracking_port"))
     print(f"tracking_uri = {config.get('tracking_base_url')}:{config.get('tracking_port')}")
 
+
     mlflow.set_tracking_uri(f"{config['tracking_base_url']}:{config['tracking_port']}")
     ###
 
