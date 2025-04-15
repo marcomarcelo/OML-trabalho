@@ -10,7 +10,7 @@ services:
     networks:
       - mlflow_network
 
-  rumosbank-default-prediction-service:
+  default-payment-prediction-service:
     build:
       context: .
       dockerfile: Dockerfile.Service
