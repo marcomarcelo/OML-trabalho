@@ -1,21 +1,32 @@
 import json
 import pytest
 import requests
+import os
+
+with open('./config/app.json') as f:
+    config = json.load(f)    
 
 with open('./config/app.json') as f:
     config = json.load(f)
 
+running_in_ci = os.getenv("GITHUB_ACTIONS") == "true"
+print(f"Running in CI: {running_in_ci}")
+
+if running_in_ci:
+    BASE_URL = config["service_base_url"]
+else:
+    BASE_URL = "http://localhost"
 
 #BASE_URL = "http://localhost"
-BASE_URL = config["service_base_url"]
+#BASE_URL = config["service_base_url"]
 PORT = config["service_port"]
 
 def test_default_payment_prediction():
     """
-    Test for the /default_payment endpoint with valid input data.
-    It should return a prediction in the response.
+    Teste do endpoint /default_payment com dados de exemplo.
     """
-    response = requests.post(f"{BASE_URL}:{PORT}/default_payment", json={
+    #response = requests.post(f"{BASE_URL}:{PORT}/default_payment", json={
+    response = requests.post(f"http://localhost:{config["service_port"]}/default_payment", json={        
         'LIMIT_BAL': 80000.0,
         'SEX': 2,       
         'EDUCATION': 2,
