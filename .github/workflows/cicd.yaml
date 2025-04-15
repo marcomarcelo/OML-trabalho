@@ -2,10 +2,11 @@ name: Pipeline CI/CD
 
 on:
   push:
-    branches:
+    branches: 
       - master
       - testes-ci-cd
-  pull_request:    
+  pull_request:
+    branches: 
       - master
       - testes-ci-cd
 
