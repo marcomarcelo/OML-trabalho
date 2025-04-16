@@ -23,7 +23,7 @@ def model() -> mlflow.pyfunc.PyFuncModel:
         model_uri=f"models:/{model_name}@{model_version}"
     )
 
-def test_model_out(model: mlflow.pyfunc.PyFuncModel):
+def test_model_out_false(model: mlflow.pyfunc.PyFuncModel):
     input = pd.DataFrame.from_records([{
         'LIMIT_BAL': 80000.0,
         'SEX': 2,       
@@ -52,7 +52,7 @@ def test_model_out(model: mlflow.pyfunc.PyFuncModel):
     prediction = model.predict(data=input)
     assert prediction[0] == 0
 
-def test_model_dir(model: mlflow.pyfunc.PyFuncModel):
+def test_model_out_true(model: mlflow.pyfunc.PyFuncModel):
     input = pd.DataFrame.from_records([{
         'LIMIT_BAL': 30000.0,
         'SEX': 2,       

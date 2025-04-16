@@ -1,8 +1,16 @@
-# Operacionalização de Machine Learning
 
-Este repositório descreve o processo de treino, implementação e operacionalização de modelos de Machine Learning para prever quais os clientes que não irão cumprir os prazos de pagamento. Contém instruções detalhadas sobre como utilizar o MLFlow e a FastAPI para servir os modelos, bem como informações sobre testes e ferramentas auxiliares.
+# Operacionalização de Machine Learning 
 
-Estes ficheiros e pastas são utilizados no âmbido do curso Operacionalização de Machine Learning.
+Este repositório descreve o processo de treino, implementação e operacionalização de modelos de Machine Learning para prever quais os clientes que não irão cumprir os prazos do próximo pagamento. Contém instruções detalhadas sobre como utilizar o MLFlow e a FastAPI para servir os modelos, bem como informações sobre testes e ferramentas auxiliares.
+
+Foi proposto o desafio para evitar que o "Rumos Bank" deixe de perder tanto dinheiro devido à quantidade de créditos que fornece e que não são pagos dentro do prazo. Pretende-se prever quais os clientes que não irão cumprir os prazos e passar o modelo para produção de uma forma rápida e eficiente:
+* Definição do ambiente do projecto
+* Modelos registados e versionados num Model Registry
+* Testes de serviço e do modelo
+* Serviços containerizados: 
+    - MLFlow-Tracking
+    - Default-payment-prediction-service
+* Container do serviço é built, testado e enviado para um container registry num pipeline de CICD
 
 # Índice
 - [Prever clientes maus pagadores](#prever-clientes-maus-pagadores)
@@ -10,18 +18,24 @@ Estes ficheiros e pastas são utilizados no âmbido do curso Operacionalização
     - [Webservice](#webservice)    
     - [Tests](#tests)
 - [Comandos Úteis](#comandos-úteis)
+    - [Anaconda](#tests)
+    - [Docker](#docker)
+    - [Docker Compose](#docker-compose)
+    - [GitHub - Criar Package](#github---criar-package)
+    - [CI-CD](#ci-cd)
 
 # Prever clientes maus pagadores
 
 ## Modelos
 
-Os modelos foram treinados através do notebook **rumos_bank_lending_prediction.ipynb** e trackeados e registados através do MLFlow.
+Os modelos foram treinados no notebook ***rumos_bank_lending_prediction.ipynb*** e trackeados e registados através do MLFlow.
 
 ## Webservice
 
 O modelo foi disponibilizado através de uma API, utilizando a framework FastAPI.
 
-Esta API expõe o endpoint `/default_payment` na qual espera receber as features de input do modelo e retorna a previsão dada pelo modelo. Para testar a API basta correr o notebook `test_requests.ipynb`, na secção de `mlflow serve`.
+Esta API expõe o endpoint `/default_payment` na qual espera receber as features de input do modelo (em formato json, no body do pedido) e retorna a previsão dada pelo modelo.   
+Para testar a API basta correr o notebook `test_requests.ipynb`, na secção de `mlflow serve`.
 
 ### Com a FastAPI
 
@@ -29,29 +43,28 @@ No python script `src\app\main.py` foi desenvolvida uma aplicação simples com 
 
 O nome e a versão do modelo registado a ser utilizado na app tem que ser especificado no ficheiro de configuração presente na diretoria `config` no ficheiro `app.json`.
 
-Esta app expõe o endpoint `/predict` na qual espera receber as features de input do modelo (em formato json, no body do pedido) e retorna a previsão dada pelo modelo.
-
-Para correr a app: com o ambiente deste projeto ativo, na raiz do projeto (pasta rumos), executar o comando abaixo:
+Para correr a app: com o ambiente deste projeto ativo, na raiz do projeto, executar o comando abaixo:
 
 ```
 python ./src/app/main.py
 ```
 
-Para testar se o modelo ficou corretamente exposto na app, temos 2 opções:
-- http://127.0.0.1:5002/docs
-- Correr a secção `FastAPI` do notebook `test_requests.ipynb`.
 
 
 ## Tests
 
-Para testarmos o nosso modelo registado utilizou-se a framework de Python `pytest`.
+Para testarmos o nosso modelo registado, utilizou-se a framework de Python `pytest`.
 
-Os testes estão presentes no script de Python `tests\random_forest\test_rf_out.py`:
+Os testes estão presentes nos scripts de Python:
+* Para testar operacionalidade do serviço:
+`tests\test_service.py`
+* Para testar o modelo: 
+`tests\test_model.py`
+    - **test_model_out_false**: testa o output do modelo e verifica se coincide com o output esperado: prediction = false
+    - **test_model_out_true**: testa o output do modelo e verifica se coincide com o output esperado: prediction = true
+    - **test_model_out_shape**: testa se a shape do output do modelo coincide com a shape esperada
 
-* `test_model_out`: testa o output do modelo e verifica se coincide com o output esperado
-* `test_model_out_shape`: testa se a shape do output do modelo coincide com a shape esperada
-
-Para correr estes testes: com o ambiente deste projeto ativo, na raiz do projeto (pasta rumos), executar o comando abaixo:
+Para correr estes testes: com o ambiente deste projeto ativo, na raiz do projeto, executar o comando abaixo:
 
 ```
 python -m pytest tests
@@ -73,42 +86,62 @@ Nota 2: Em Windows, poderá ser necessário executar o comando `Set-ExecutionPol
 
 `conda deactivate`: desactiva o ambiente atualmente activo do Anaconda
 
-`conda env list`: comando utilizar para listar os ambientes que temos do Anaconda. Útil também para verificarmos onde estão instalados os ambientes do Anaconda
-
 `conda env export --file conda.yaml`: comando utilizado para exportar o ambiente atual do anaconda para um ficheiro yaml. [Link para a documentação do conda](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#exporting-the-environment-yml-file)
 
-`conda env export --from-history --file conda.yml`: comando utilizado para exportar o ambiente atual do anaconda para um ficheiro yaml, **incluindo apenas pacotes explicitamente pedidos** graças à flag `--from-history`. Esta flag é normalmente utilizada para tentar não incluir dependências que não funcionam cross platform, como é referido [na documentação do conda](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#exporting-an-environment-file-across-platforms) 
+`conda env create -f conda.yaml`: comando utilizado para criar um ambiente do Anaconda a partir de um ficheiro que contenha a especificação de um ambiente do Anaconda. Este novo ambiente ficará com o nome que está especificado no ficheiro. Para usar um outro nome basta adicionar ao comando `-n <env-name>` (substituindo `<env-name>` pelo nome qu querem que fique). [Link para a documentação do conda](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file)   
 
-`conda env create -f conda.yaml`: comando utilizado para criar um ambiente do Anaconda a partir de um ficheiro que contenha a especificação de um ambiente do Anaconda. Este novo ambiente ficará com o nome que está especificado no ficheiro. Para usar um outro nome basta adicionar ao comando `-n <env-name>` (substituindo `<env-name>` pelo nome qu querem que fique). [Link para a documentação do conda](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file)
+*Configuração*: **conda.yaml**
 
 
-## Jupyter
+## Docker
 
-Para instalar e correr, numa consola correr:
+### Serviço MLFlow
 
-```
-conda install jupyter
-jupyter lab
-```
-
-Para registar o venv, correr numa consola:
+Inicializar o serviço MLFlow UI num container do docker:
 
 ```
-python -m ipykernel install --user --name=OML
+docker run -p 5000:5000 -v ./mlruns:/mlruns ghcr.io/mlflow/mlflow mlflow ui --port 5000 --host 0.0.0.0 --backend-store-uri ./mlruns --artifacts-destination ./mlruns
 ```
 
-## MLFlow
+Endereço de acesso ao MLFLow: 
+http://localhost:5000
 
-Inicializar a UI:
 
+### Serviço do modelo 
+
+Criar a imagem no docker do serviço de predição (FastAPI).   
+*Configuração*: **Dockerfile.service**
 ```
-mlflow ui --backend-store-uri ./mlruns
+docker build -t service -f Dockerfile.Service .
+```
+Endereço de acesso à documentação do serviço: 
+http://localhost:5002/docs
+
+
+## Docker Compose
+Inicializar os dois serviços em simultâneo.   
+*Configuração*: **docker-compose.yaml**
+```
+docker compose up
 ```
 
-## Windows
-
-Por padrão, o Windows bloqueia a execução de scripts não assinados no PowerShell. Pode-se alterar essa configuração com:
-
+## GitHub - Criar Package
+Enviar a imagem do serviço para o GitHub.
 ```
-Set-ExecutionPolicy Unrestricted -Scope LocalMachine -Force
+docker push ghcr.io/marcomarcelo/default-payment-prediction-service
 ```
+
+https://github.com/marcomarcelo
+
+
+## CI-CD
+Integrar e passar serviço para produção (deploy) através da construção de um pipeline.
+*Configuração*: **.github/workflows/cicd.yaml**
+
+Acionado com:
+```
+git push
+```
+
+Ver o log dos workflows:   
+https://github.com/marcomarcelo/OML-trabalho/actions
