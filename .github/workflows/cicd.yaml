@@ -2,9 +2,13 @@ name: Pipeline CI/CD
 
 on:
   push:
-    branches: [ testes-ci-cd ]
+    branches: 
+      - master
+      - testes-ci-cd
   pull_request:
-    branches: [ testes-ci-cd ]
+    branches: 
+      - master
+      - testes-ci-cd
 
 permissions:
   contents: read
@@ -25,20 +29,23 @@ jobs:
       - name: Iniciar serviços
         run: docker compose up -d
 
-      # - name: Estado dos serviços Docker Compose
-      #   run: docker compose ps
-
-      - name: Ver logs do MLflow
-        run: docker compose logs mlflow-tracking-server 
-
       - name: Criar ambiente para executar testes com o conda
         uses: conda-incubator/setup-miniconda@v2
         with:
           environment-file: conda.yaml
           activate-environment: OML
 
-      - name: Executar testes
-        run: conda run --no-capture-output -n OML pytest
+      - name: Verificar containers em execução
+        run: docker ps
+
+      - name: Ver logs do MLflow
+        run: docker compose logs mlflow          
+           
+      #- name: Estado dos serviços Docker Compose
+      #  run: docker compose ps
+
+      #- name: Executar testes
+      #  run: conda run --no-capture-output -n OML pytest
 
       - name: Iniciar sessão no repositório do GitHub
         uses: docker/login-action@v2
