@@ -22,5 +22,6 @@ COPY src src
 COPY tests tests
 
 # Executa a aplicação FastAPI
-CMD ["conda", "run", "--no-capture-output", "-n", "OML", "python", "src/app/main.py"]
+CMD ["bash", "-c", "source activate OML && python ./src/app/main.py"]
+#CMD ["conda", "run", "--no-capture-output", "-n", "OML", "python", "src/app/main.py"]
 #CMD conda run --no-capture-output -n OML python src/app/main.py
