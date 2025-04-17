@@ -40,6 +40,7 @@ def test_default_payment_prediction():
         'PAY_AMT6': 2000.0
     })
 
+    # Garantir que a resposta HTTP recebida do servidor tem um código de status 200:  "OK" – Requisição bem-sucedida
     assert response.status_code == 200
     assert "prediction" in response.json()
     assert isinstance(response.json()["prediction"], (int, float))

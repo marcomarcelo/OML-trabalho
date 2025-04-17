@@ -27,9 +27,13 @@ conda env export --file conda.yaml
 ```
 
 5. Como podemos ver, ao adicionar o ficheiro ***conda.yaml*** ao nosso projeto, podemos passar o nosso código a qualquer pessoa, que vai poder muito rapidamente reproduzir as nossas experiências, sem qualquer conhecimento prévio necessário.
+```
+conda env create -f conda.yaml
+conda activate OML
+```
 
 ## Tornar a amostra reproduzível
-Para treinar e testar diferentes modelos com os mesmos dados, de forma a que sejam comparáveis, é necessário evitar a aleatoriedade:
+Para treinar e testar os diferentes modelos com os mesmos dados, de forma a que sejam comparáveis, é necessário evitar a aleatoriedade:
 
 1. Adicionar a linha `np.random.seed(42)` antes de fazer o split
 2. Desta forma, independentemente do número de vezes que corrermos o script, o split será sempre o mesmo.
