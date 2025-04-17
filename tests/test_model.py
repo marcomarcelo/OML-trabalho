@@ -8,16 +8,12 @@ def model() -> mlflow.pyfunc.PyFuncModel:
     with open('./config/app.json') as f:
         config = json.load(f)
     
+    # URI do serviço MLFlow
+    mlflow.set_tracking_uri(f"http://localhost:{config['tracking_port']}")    
+    
+    # Carregar o modelo especificado na configuração
     model_name = config["model_name"]
-    model_version = config["model_version"]
-
-    mlflow.set_tracking_uri("http://localhost:5000")
-    #mlflow.set_tracking_uri(f"{config['tracking_base_url']}:{config['tracking_port']}") 
-
-    # Load the registered model specified in the configuration
-    model = f"models:/{config['model_name']}@{config['model_version']}"
-    print(f"Modelo carregado com sucesso: {model}")   
-
+    model_version = config["model_version"]    
     print (f"Modelo carregado com sucesso: models:/{model_name}@{model_version}")
     return mlflow.pyfunc.load_model(
         model_uri=f"models:/{model_name}@{model_version}"

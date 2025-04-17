@@ -1,15 +1,12 @@
 import json
 import requests 
 import warnings
-import os
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
-running_in_ci = os.getenv("GITHUB_ACTIONS") == "true"
 
 with open('./config/app.json') as f:
     config = json.load(f)    
-
-#BASE_URL = config["service_base_url"] if running_in_ci else "http://localhost" 
+ 
 BASE_URL = "http://localhost" 
 PORT = config["service_port"]
 
