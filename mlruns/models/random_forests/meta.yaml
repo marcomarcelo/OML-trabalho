@@ -1,8 +1,8 @@
 aliases:
-  champion: '2'
+  champion: '3'
 creation_timestamp: 1744563723380
 deployment_job_id: null
 deployment_job_state: null
 description: ''
-last_updated_timestamp: 1744704565077
+last_updated_timestamp: 1744873784814
 name: random_forests

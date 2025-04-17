@@ -44,9 +44,6 @@ jobs:
       - name: Ver logs do serviço
         run: docker compose logs default-payment-prediction-service       
            
-      #- name: Estado dos serviços Docker Compose
-      #  run: docker compose ps
-
       #- name: Executar testes
       #  run: conda run --no-capture-output -n OML pytest
 
