@@ -10,7 +10,7 @@ Foi proposto o desafio para evitar que o Rumos Bank continue a perder tanto dinh
 * Serviços containerizados: 
     - MLFlow-Tracking
     - Default-payment-prediction-service
-* O container do serviço é constrído, testado e enviado para um container registry num pipeline de CI/CD
+* O container do serviço é construído, testado e enviado para um container registry num pipeline de CI/CD
 
 # Índice
 - [Prever clientes maus pagadores](#prever-clientes-maus-pagadores)
