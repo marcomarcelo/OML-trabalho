@@ -1,3 +1,4 @@
+from typing import Literal
 import pandas as pd
 import json
 import mlflow
@@ -41,12 +42,14 @@ class Request(BaseModel):
         PAY_AMT5 (float): Amount of previous payment in May, 2005.                        
         PAY_AMT6 (float): Amount of previous payment in April, 2005.            
     """
-    #LIMIT_BAL: conint(ge=0) = 20000 # type: ignore
-    LIMIT_BAL: float = 80000.0	
-    SEX: int = 2
+    LIMIT_BAL: conint(ge=0) = 20000 # type: ignore
+    #LIMIT_BAL: float = 80000.0
+    SEXO: Literal[1, 2] = 2	
+    #SEX: int = 2
     EDUCATION: int = 2
     MARRIAGE: int = 1
-    AGE: int = 34
+    AGE: conint(gt=18, lt=80) = 20 # type: ignore
+    #AGE: int = 34
     PAY_0: int = 0
     PAY_2: int = 0
     PAY_3: int = 0

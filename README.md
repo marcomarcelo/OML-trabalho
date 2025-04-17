@@ -60,9 +60,11 @@ Os testes estão presentes nos scripts de Python:
 `tests\test_service.py`
 * Para testar o modelo: 
 `tests\test_model.py`
-    - **test_model_out_false**: testa o output do modelo e verifica se coincide com o output esperado: prediction = false
-    - **test_model_out_true**: testa o output do modelo e verifica se coincide com o output esperado: prediction = true
-    - **test_model_out_shape**: testa se a shape do output do modelo coincide com a shape esperada
+    - **test_model_out_false**: Garantir que para um input específico, o modelo retorna o output esperado: prediction = false
+    - **test_model_out_true**: Garantir que para um input específico, o modelo retorna o output esperado: prediction = true
+    - **test_model_out_shape**: Confirmar se o modelo dá apenas uma previsão
+    - **test_model_out_range**: Assegurar que a saída retorna um valor esperado: 0 ou 1
+    - **test_previsao_deterministica**: Verificar consistência da previsão - Para o mesmo input ambas as previsões têm que ser iguais
 
 Para correr estes testes: com o ambiente deste projeto ativo, na raiz do projeto, executar o comando abaixo:
 
